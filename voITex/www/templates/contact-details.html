@@ -1,0 +1,67 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{contact.displayName}}" cache-view="false" hide-tabs>
+    <!--<ion-content class="padding">
+      <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
+      <p>
+        {{chat.lastText}}
+      </p>
+    </ion-content>-->
+    <ion-content overflow-scroll='false' delegate-handle="userDetailContent" on-scroll="onUserDetailContentScroll()" header-shrink scroll-event-interval="5">
+        <div class="about-header">
+            <ion-slide-box auto-play="false" show-pager="false">
+                <ion-slide data-ng-repeat="photo in contact.photos">
+                    <div class="profile-media">
+                        <!--<div class="profile-details">
+                            <img ng-src="{{chat.face}}" class="img-circle profile-image">
+                            <h5 class="color-white">
+                                {{i}}
+                            </h5>
+                            <p>
+                                Some thing About {{i}}
+                            </p>
+                        </div>-->
+                        <img ng-src="{{photo.value}}" class="about-image profile-background-image" style="vertical-align:middle;">
+                    </div>
+                </ion-slide>
+                <img ng-if="contact.photos ==null" src="./img/adam.jpg" class="about-image profile-background-image" style="vertical-align:middle;" />
+            </ion-slide-box>
+            <div class="row like-btn">
+                <div class="col text-right">
+                    <div ng-class="liked ? 'bg-color-red like-button-with-text':'bg-color-green like-button'" ng-click="like()">
+                        <i class="ion-edit color-white"></i>
+                        <span ng-if="liked">edited</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card padding" ng-repeat="number in contact.phoneNumbers">
+            <div class="row">
+                <i class="col ion-ios-telephone"></i>
+                <span class="col col-90" ui-sref="tab.inCall({userId: contact.id, numberId: number.id})">{{number.value}}</span>
+            </div>
+            <div class="row">
+                <i class="col"></i>
+                <span class="col col-90">{{number.type}}</span>
+            </div>
+        </div>
+
+        <p class="row card padding" ng-repeat="email in contact.emails">
+            <i class="col ion-ios-email"></i>  <span class="col col-90">{{email.value}}</span>
+        </p>
+
+        <!--<p class="card padding">
+            custom note.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>-->
+    </ion-content>
+</ion-view>

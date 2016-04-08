@@ -1,0 +1,59 @@
+﻿<ion-view view-title="Talking to: {{user.displayName}}" cache-view="false" hide-tabs>
+    <ion-content>
+        <div class="row">
+            <div class="col item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+                <img ng-if="user.photos !=null" ng-src="{{user.photos[0].value}}">
+                <img ng-if="user.photos ==null" src="./img/adam.jpg" />
+            </div>
+            <div class="col col-75">
+                <span>{{user.displayName}}</span>
+                <br />
+                <span>{{number}}</span>
+                <br />
+                <span>mobile</span>
+            </div>
+        </div>
+        <div class="row message">
+            <p id="call_text" class="card padding">
+                {{callText}}
+            </p>
+        </div>
+        <div class="row">
+            <div class="col col-80"></div>
+            <div class="col">
+                <span>01:30</span>
+            </div>
+        </div>
+        <div class="card padding buttons">
+            <div class="row">
+                <div class="col">
+                    <div class="bg-color-white like-button">
+                        <i class="ion-ios-plus-empty color-gray"></i>
+                        <span>Text reply</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="bg-color-white like-button">
+                        <i class="ion-ios-keypad color-gray"></i>
+                        <span>Keypad</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="bg-color-white like-button">
+                        <i class="ion-android-contacts color-gray"></i>
+                        <span>Contacts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="bg-color-red like-button" ng-click="stopCall()">
+                        <i class="ion-ios-telephone color-white"></i>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

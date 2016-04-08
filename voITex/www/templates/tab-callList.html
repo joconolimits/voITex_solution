@@ -1,0 +1,19 @@
+<ion-view view-title="call List">
+  <ion-content class="padding">
+      <ion-list ng-repeat="call in data">
+          <ion-item>
+              <span>{{call.cachedName}}</span>
+              <br />
+              <span>{{call.number}}</span>
+              <br />
+              <span>{{callTypeDisplay(call.type)}}</span>
+              <br />
+              <span>{{call.date | date}}</span>
+              <br />
+              <span>Duration: {{call.duration}} seconds</span>
+              <br />
+              <span>Acknowledged: {{(call.new == 1 ? 'yes' : 'no')}}</span>
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
