@@ -1,7 +1,13 @@
 ﻿app.controller('callListCtrl', function ($scope, callListFactory) {
     console.log("In callListCtrl");
 
-
+    //Togle the action buttons bar.
+    $scope.hasBtnsBar;
+    $scope.toggleBtnsBar = function (hasBtnsBar) {
+        $scope.hasBtnsBar = hasBtnsBar;
+        if (hasBtnsBar) $scope.hasBtnsBar = false;
+        else $scope.hasBtnsBar = true;
+    }
 
     $scope.data = {};
     $scope.callTypeDisplay = function(type) {
@@ -27,6 +33,11 @@
     //        console.log("I got Error from The plugin");
     //    });
     //}
+
+    /*
+    **Load the data
+    **The method receives the Number of days for the log
+    */
     callListFactory.list(7).then(
             function (callLog) {
                 console.log(callLog);

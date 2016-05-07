@@ -16,7 +16,7 @@
 
         <ion-content>
             <ion-list>
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in phoneContacts" type="item-text-wrap" href="#/tab/phoneBook/{{contact.id}}">
+                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in phoneContacts | orderBy: 'displayName' " type="item-text-wrap" href="#/tab/phoneBook/{{contact.id}}">
                     <img ng-if="contact.photos !=null" ng-src="{{contact.photos[0].value}}" />
                     <img ng-if="contact.photos ==null" src="./img/adam.jpg" />
                     <h2>{{contact.displayName}}</h2>

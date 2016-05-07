@@ -73,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       })
 
      .state('tab.inCall', {
-         url: '/phoneBook/inCall/:userId?numberId',
+         url: '/phoneBook/inCall/:userId?userName?numberId?number',
          views: {
              'tab-phoneBook': {
                  templateUrl: 'templates/inCall.html',
@@ -118,6 +118,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             });
             $scope.$on("$ionicView.leave", function () {
                 $rootScope.hideTabs = false;
+                console.log("view leave.  show the tabs");
             });
         }
     };
