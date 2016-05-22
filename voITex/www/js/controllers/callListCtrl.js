@@ -23,22 +23,12 @@
         }
     };
 
-    //document.addEventListener("deviceready", onDeviceReady, false);
-    //function onDeviceReady() {
-    //    window.plugins.calllog.list(7, function (response) {
-    //        console.log("I got response from The plugin");
-    //        console.log("The response is: " + response);
-    //        console.log("The response is 2 : " + response.rows);
-    //    }, function (error) {
-    //        console.log("I got Error from The plugin");
-    //    });
-    //}
-
     /*
     **Load the data
     **The method receives the Number of days for the log
     */
-    callListFactory.list(7).then(
+    var days = 7;
+    callListFactory.list(days).then(
             function (callLog) {
                 console.log(callLog);
                 $scope.data.lastCall = callLog[0];

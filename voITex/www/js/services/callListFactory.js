@@ -1,11 +1,10 @@
-﻿//Author Jordan
-// This does not work It needs some Hardcore Debugging. 
+﻿//Author Jordan 
 appServices.factory('callListFactory', ['$q', function ($q) {
     console.log("Factory 1");
         return {
 
             list: function (days) {
-                console.log("Factory 2");
+                //console.log("Factory 2");
                 var q = $q.defer();
                 // days is how many days back to go
                 document.addEventListener("deviceready", onDeviceReady, false);
@@ -17,11 +16,6 @@ appServices.factory('callListFactory', ['$q', function ($q) {
                         q.reject(error)
                     });
                 }
-                //window.plugins.calllog.list(days, function (response) {
-                //    q.resolve(response.rows);
-                //}, function (error) {
-                //    q.reject(error)
-                //});
                 return q.promise;
             },
 

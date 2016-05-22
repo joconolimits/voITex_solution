@@ -2,7 +2,7 @@
     <ion-content class="padding">
         <ion-list ng-repeat="call in data">
             <ion-item>
-                <div ng-click="toggleBtnsBar(hasBtnsBar)">
+                <div ng-click="showDetails = ! showDetails">
                     <span>{{call.cachedName}}</span>
                     <br />
                     <span>{{call.number}}</span>
@@ -18,7 +18,7 @@
                     <span>Acknowledged: {{(call.new == 1 ? 'yes' : 'no')}}</span>-->
                 </div>
                 <br />
-                <div ng-if="hasBtnsBar" >
+                <div ng-show="showDetails">
                     <a ui-sref="tab.inCall({userName: call.cachedName, number: call.number})">Call</a>
                     <a ui-sref="#">Details</a>
                 </div>
