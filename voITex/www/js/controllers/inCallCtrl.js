@@ -35,7 +35,7 @@ console.log("the number: " + $scope.number);
     //}, $scope.number, bypassAppChooser);
 
     //start converting text 
-    inCallFactory.startCall();
+    inCallFactory.startCall($scope.number);
      
     //end the call
     $scope.stopCall = function () {
