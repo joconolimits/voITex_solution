@@ -5,18 +5,25 @@ appServices.factory('inCallFactory', ['$rootScope', 'socket', function ($rootSco
     
     return {
         //beagining of Annyang block
-        startCall: function () {
+        startCall: function (phoneNumber) {
+            socket.on('messageReceived', function (message) {
+                $rootScope.callText = message;
+                $('#call_text').animate({
+                    scrollTop: $('#call_text').get(0).scrollHeight
+                }, 7000);
+                $rootScope.$apply();
+            });
             $rootScope.callText = '';
             var commands = {
                 '*val': function (val) {
-                    $rootScope.callText += "\n" + val;
+                    //$rootScope.callText += "\n" + val;
                     //Send the annyang text to the backend 
-                    socket.emit('voitexMessage', val);
+                    var data = {
+                        message: val,
+                        nickname: phoneNumber
+                    }
+                    socket.emit('voitexMessage', data);
                     //Show the annyang text to the view
-                    $('#call_text').animate({
-                        scrollTop: $('#call_text').get(0).scrollHeight
-                    }, 7000);
-                    $rootScope.$apply();
                 }
 
             } // end commands
